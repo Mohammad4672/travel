@@ -66,11 +66,6 @@ font-size:28px;
 font-weight:bold;
 margin-bottom:25px;
 }
-.message{
-font-size:20px;
-line-height:2;
-margin-bottom:25px;
-}
 button{
 padding:14px 28px;
 font-size:18px;
@@ -85,10 +80,10 @@ transform:scale(1.05);
 }
 .hidden{
 display:none;
-margin-top:20px;
+margin-top:25px;
 font-size:22px;
 color:#ffd6e7;
-line-height:1.8;
+line-height:2;
 }
 .heart{
 position:fixed;
@@ -128,30 +123,21 @@ transform 1s ease;
 <br><br>
 🌍 حوالي 4300 كيلومتر
 </div>
-<div class="message">
-4300 كيلومتر رقم كبير...
-<br>
-بس انتِ يا رُبى ما بتقدر المسافات تبعدك..
-<br>
-بس حبيت أتركلك هالصفحة الصغيرة،
-<br>
-لتعرفي إنك من الأشخاص اللي رح آخد ذكراهن معي وين ما رحت.
-<br>
-إذا فتحتي هالصفحة بأي يوم،
-<br>
-تذكري إنو في شخص على بعد آلاف الكيلومترات
-<br>
-عم يتمنى إنك تكوني بخير ومبسوطة.
-<br>
-ديري بالك عحالك...
-<br>
-وما تنسيني وأنا مسافر ❤️
-</div>
 
 🎙️ اسمعي رسالة مني
 💌 افتحي الرسالة
 
 <div id="extra" class="hidden">
+
+4300 كيلومتر رقم كبير…
+بس انتِ يا رُبى ما بتقدر المسافات تبعدك..
+بس حبيت أتركلك هالصفحة الصغيرة،
+لتعرفي إنك من الأشخاص اللي رح آخد ذكراهن معي وين ما رحت.
+إذا فتحتي هالصفحة بأي يوم،
+تذكري إنو في شخص على بعد آلاف الكيلومترات
+عم يتمنى إنك تكوني بخير ومبسوطة.
+ديري بالك عحالك…
+وما تنسيني وأنا مسافر ❤️
 
 مهما بعدت المسافات…
 انتِ يا رُبى بتضلي قريبة وبقلبي.
@@ -184,7 +170,7 @@ document.getElementById('voice').play();
 function createRandomPlane(){
 const plane=document.createElement('div');
 plane.className='plane';
-plane.innerHTML='❤️✈️';
+plane.innerHTML='✈️';
 document.body.appendChild(plane);
 let x=window.innerWidth/2;
 let y=window.innerHeight/2;
@@ -195,17 +181,13 @@ const newAngle=Math.random()*360;
 const distance=200+Math.random()*300;
 const targetX=Math.max(
 50,
-Math.min(
-window.innerWidth-100,
-x + Math.cos(newAngle*Math.PI/180)*distance
-)
+Math.min(window.innerWidth-100,
+x + Math.cos(newAngle*Math.PI/180)*distance)
 );
 const targetY=Math.max(
 50,
-Math.min(
-window.innerHeight-100,
-y + Math.sin(newAngle*Math.PI/180)*distance
-)
+Math.min(window.innerHeight-100,
+y + Math.sin(newAngle*Math.PI/180)*distance)
 );
 const faceAngle=Math.atan2(
 targetY-y,
