@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إلى رُبى ❤️</title>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+padding:20px;
+background:linear-gradient(-45deg,#0f172a,#1e293b,#312e81,#4c1d95);
+background-size:400% 400%;
+animation:bg 15s ease infinite;
+}
+@keyframes bg{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+.stars{
+position:fixed;
+inset:0;
+z-index:0;
+}
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+border-radius:50%;
+animation:twinkle 3s infinite;
+}
+@keyframes twinkle{
+0%,100%{opacity:.2}
+50%{opacity:1}
+}
+.card{
+position:relative;
+z-index:2;
+width:100%;
+max-width:850px;
+padding:40px;
+text-align:center;
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(15px);
+border-radius:25px;
+color:white;
+box-shadow:0 0 40px rgba(255,255,255,.15);
+}
+h1{
+font-size:42px;
+margin-bottom:20px;
+}
+.distance{
+font-size:28px;
+font-weight:bold;
+margin-bottom:25px;
+}
+.message{
+font-size:20px;
+line-height:2;
+margin-bottom:25px;
+}
+button{
+padding:14px 28px;
+font-size:18px;
+border:none;
+border-radius:15px;
+cursor:pointer;
+margin:8px;
+transition:.3s;
+}
+button:hover{
+transform:scale(1.05);
+}
+.hidden{
+display:none;
+margin-top:20px;
+font-size:22px;
+color:#ffd6e7;
+line-height:1.8;
+}
+.heart{
+position:fixed;
+pointer-events:none;
+z-index:9999;
+animation:floatUp 4s linear forwards;
+}
+@keyframes floatUp{
+0%{
+transform:translateY(0) scale(.5);
+opacity:1;
+}
+100%{
+transform:translateY(-550px) scale(1.8);
+opacity:0;
+}
+}
+.plane{
+position:fixed;
+font-size:90px;
+z-index:10000;
+pointer-events:none;
+filter:drop-shadow(0 0 25px rgba(255,255,255,.9));
+transition:
+left 3.5s ease-in-out,
+top 3.5s ease-in-out,
+transform 1s ease;
+}
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<div class="card">
+<h1>❤️ إلى رُبى ❤️</h1>
+<div class="distance">
+📍 صيدا 🇱🇧 ➜ نيجيريا 🇳🇬
+<br><br>
+🌍 حوالي 4300 كيلومتر
+</div>
+<div class="message">
+4300 كيلومتر رقم كبير...
+<br>
+بس انتِ يا رُبى ما بتقدر المسافات تبعدك..
+<br>
+بس حبيت أتركلك هالصفحة الصغيرة،
+<br>
+لتعرفي إنك من الأشخاص اللي رح آخد ذكراهن معي وين ما رحت.
+<br>
+إذا فتحتي هالصفحة بأي يوم،
+<br>
+تذكري إنو في شخص على بعد آلاف الكيلومترات
+<br>
+عم يتمنى إنك تكوني بخير ومبسوطة.
+<br>
+ديري بالك عحالك...
+<br>
+وما تنسيني وأنا مسافر ❤️
+</div>
+
+🎙️ اسمعي رسالة مني
+💌 افتحي الرسالة
+
+<div id="extra" class="hidden">
+
+مهما بعدت المسافات…
+انتِ يا رُبى بتضلي قريبة وبقلبي.
+إذا اشتقتيلي يوم،
+تذكري إنو في شخص على بعد 4300 كم
+عم يفكر فيكي وبيتمنى تكوني بخير.
+
+✈️ من صيدا إلى نيجيريا…
+المسافة كبيرة،
+بس الذكريات الحلوة ما إلها مسافة.
+❤️
+
+</div>
+</div>
+<script>
+for(let i=0;i<150;i++){
+const s=document.createElement('div');
+s.className='star';
+s.style.left=Math.random()*100+'%';
+s.style.top=Math.random()*100+'%';
+s.style.animationDelay=Math.random()*3+'s';
+document.getElementById('stars').appendChild(s);
+}
+function showMessage(){
+document.getElementById('extra').style.display='block';
+}
+function playVoice(){
+document.getElementById('voice').play();
+}
+function createRandomPlane(){
+const plane=document.createElement('div');
+plane.className='plane';
+plane.innerHTML='❤️✈️';
+document.body.appendChild(plane);
+let x=window.innerWidth/2;
+let y=window.innerHeight/2;
+plane.style.left=x+'px';
+plane.style.top=y+'px';
+function fly(){
+const newAngle=Math.random()*360;
+const distance=200+Math.random()*300;
+const targetX=Math.max(
+50,
+Math.min(
+window.innerWidth-100,
+x + Math.cos(newAngle*Math.PI/180)*distance
+)
+);
+const targetY=Math.max(
+50,
+Math.min(
+window.innerHeight-100,
+y + Math.sin(newAngle*Math.PI/180)*distance
+)
+);
+const faceAngle=Math.atan2(
+targetY-y,
+targetX-x
+)*180/Math.PI;
+plane.style.left=targetX+'px';
+plane.style.top=targetY+'px';
+plane.style.transform=`rotate(${faceAngle}deg)`;
+x=targetX;
+y=targetY;
+}
+fly();
+setInterval(fly,3500);
+}
+function infiniteHearts(){
+const hearts=['❤️','💖','💕','💗','💘','💝'];
+setInterval(()=>{
+const h=document.createElement('div');
+h.className='heart';
+h.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
+h.style.left=Math.random()*100+'vw';
+h.style.bottom='0';
+h.style.fontSize=(20+Math.random()*35)+'px';
+document.body.appendChild(h);
+setTimeout(()=>{
+h.remove();
+},4000);
+},400);
+}
+window.onload=()=>{
+createRandomPlane();
+infiniteHearts();
+};
+</script>
