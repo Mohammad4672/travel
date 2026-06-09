@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إلى رُبى ❤️</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{
+min-height:100vh;display:flex;justify-content:center;align-items:center;
+overflow:hidden;
+background:linear-gradient(-45deg,#0f172a,#1e293b,#312e81,#4c1d95);
+background-size:400% 400%;
+animation:bg 15s ease infinite;padding:20px;
+}
+@keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.stars{position:fixed;inset:0}
+.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle 3s infinite}
+@keyframes twinkle{0%,100%{opacity:.2}50%{opacity:1}}
+.card{position:relative;z-index:2;width:100%;max-width:800px;padding:40px;text-align:center;background:rgba(255,255,255,.12);backdrop-filter:blur(15px);border-radius:25px;color:#fff;box-shadow:0 0 40px rgba(255,255,255,.15)}
+h1{font-size:40px;margin-bottom:20px}
+.distance{font-size:28px;font-weight:bold;margin-bottom:25px}
+.message{line-height:2;font-size:20px;margin-bottom:25px}
+button{padding:14px 28px;font-size:18px;border:none;border-radius:15px;cursor:pointer;margin:8px}
+.hidden{display:none;margin-top:20px;font-size:22px;color:#ffd6e7;line-height:1.8}
+
+.heart{position:fixed;pointer-events:none;z-index:9999;animation:floatUp 4s linear forwards;}
+@keyframes floatUp{0%{transform:translateY(0) scale(.5);opacity:1}100%{transform:translateY(-550px) scale(1.8);opacity:0}}
+
+.plane{
+position:fixed;
+font-size:90px;
+z-index:10000;
+pointer-events:none;
+filter:drop-shadow(0 0 20px rgba(255,255,255,.8));
+transition:left 4s linear, top 4s linear, transform 4s linear;
+}
+
+@keyframes bgmove{}
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="card">
+<h1>❤️ إلى رُبى ❤️</h1>
+
+<div class="distance">
+📍 صيدا 🇱🇧 ➜ نيجيريا 🇳🇬
+<br><br>
+🌍 حوالي 4300 كيلومتر
+</div>
+
+<div class="message">
+4300 كيلومتر رقم كبير...
+بس انتِ يا رُبى ما بتقدر المسافات تبعدك..
+بس حبيت أتركلك هالصفحة الصغيرة،
+لتعرفي إنك من الأشخاص اللي رح آخد ذكراهن معي وين ما رحت.
+إذا فتحتي هالصفحة بأي يوم،
+تذكري إنو في شخص على بعد آلاف الكيلومترات
+عم يتمنى إنك تكوني بخير ومبسوطة.
+ديري بالك عحالك...
+وما تنسيني وأنا مسافر ❤️
+</div>
+
+<div style="font-size:24px;margin:25px 0;line-height:2;">
+📍 صيدا 🇱🇧<br>✈️<br>🇳🇬 نيجيريا
+</div>
+
+<audio id="voice" src="voice5.m4a"></audio>
+
+<button onclick="playVoice()">🎙️ اسمعي رسالة مني</button>
+<button onclick="showMessage()">💌 افتحي الرسالة</button>
+
+<div id="extra" class="hidden">
+مهما بعدت المسافات...
+انتِ يا رُبى بتضلي قريبة وبقلبي
+إذا اشتقتيلي يوم،
+تذكري إنو في شخص على بعد 4300 كم
+عم يفكر فيكي وبيتمنى تكوني بخير.
+
+<br><br>
+✈️ من صيدا إلى نيجيريا...
+<br>
+المسافة كبيرة،
+<br>
+بس الذكريات الحلوة ما إلها مسافة.
+<br><br>❤️
+</div>
+</div>
+
+<script>
+for(let i=0;i<150;i++){
+const s=document.createElement('div');
+s.className='star';
+s.style.left=Math.random()*100+'%';
+s.style.top=Math.random()*100+'%';
+s.style.animationDelay=Math.random()*3+'s';
+document.getElementById('stars').appendChild(s);
+}
+
+function showMessage(){
+document.getElementById('extra').style.display='block';
+}
+
+function playVoice(){
+document.getElementById('voice').play();
+}
+
+function createRandomPlane(){
+const plane=document.createElement('div');
+plane.className='plane';
+plane.innerHTML='✈️';
+document.body.appendChild(plane);
+
+function movePlane(){
+const x=Math.random()*(window.innerWidth-150);
+const y=Math.random()*(window.innerHeight-150);
+const rotation=Math.random()*360;
+
+plane.style.left=x+'px';
+plane.style.top=y+'px';
+plane.style.transform='rotate('+rotation+'deg)';
+}
+
+movePlane();
+setInterval(movePlane,4000);
+}
+
+function infiniteHearts(){
+const hearts=['❤️','💖','💕','💗','💘','💝'];
+setInterval(()=>{
+const h=document.createElement('div');
+h.className='heart';
+h.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
+h.style.left=Math.random()*100+'vw';
+h.style.bottom='0';
+h.style.fontSize=(20+Math.random()*35)+'px';
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),4000);
+},400);
+}
+
+window.onload=()=>{
+createRandomPlane();
+infiniteHearts();
+};
+</script>
+</body>
+</html>
